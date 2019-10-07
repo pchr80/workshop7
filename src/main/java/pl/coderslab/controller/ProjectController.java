@@ -49,7 +49,7 @@ public class ProjectController {
     }
 
     @RequestMapping("/form")
-    public String showForm(@RequestParam(required = false) Long id, @RequestParam(required = false) String admin, Model model, HttpSession session){
+    public String showForm(@RequestParam(required = false) Long id, @RequestParam(required = false) String admin, Model model, HttpSession session) {
         Project project = id == null ? new Project() : projectRepository.findFirstById(id);
         if (admin != null) {
             session.setAttribute("admin", admin);
