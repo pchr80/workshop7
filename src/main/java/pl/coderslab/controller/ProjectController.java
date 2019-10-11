@@ -17,6 +17,7 @@ import pl.coderslab.repository.UserRepository;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,31 +31,37 @@ public class ProjectController {
     @Autowired
     ActivityRepository activityRepository;
 
-
     @RequestMapping("/all")
-    public String list(@RequestParam(required = false) String admin, Model model, HttpSession session) {
-        String login = (String)session.getAttribute("login");
-        if (login == null || login.equals("admin")) {
-            model.addAttribute("projects", projectRepository.findAll());
+    public String list(Model model, HttpSession session) {
+        List<Project> projectList = new ArrayList<>();
+        String login = (String)session.getAttribute("login") == null ? new String() : (String)session.getAttribute("login");
+        if (login.equals("admin")) {
+            projectList = projectRepository.findAll();
         } else {
             User user = userRepository.findFirstByLogin(login);
             if (user != null) {
-                model.addAttribute("projects", projectRepository.findByUsersContains(user));
+                projectList = projectRepository.findByUsersContains(user);
             }
         }
-        if (admin != null) {
-            session.setAttribute("admin", admin);
-        }
+        model.addAttribute("projects", projectList);
         return "project/list";
     }
 
     @RequestMapping("/form")
-    public String showForm(@RequestParam(required = false) Long id, @RequestParam(required = false) String admin, Model model, HttpSession session) {
+    public String showForm(@RequestParam(required = false) Long id, Model model, HttpSession session) {
         Project project = id == null ? new Project() : projectRepository.findFirstById(id);
-        if (admin != null) {
-            session.setAttribute("admin", admin);
+        String login = (String)session.getAttribute("login") == null ? new String() : (String)session.getAttribute("login");
+        List<User> userList = new ArrayList<>();
+        if (login.equals("admin")) {
+            userList = userRepository.findAll();
+        } else {
+            User user = userRepository.findFirstByLogin(login);
+            if (user != null) {
+                userList.add(user);
+            }
         }
         model.addAttribute("project", project);
+        model.addAttribute("users", userList);
         return "project/form";
     }
 
@@ -75,10 +82,10 @@ public class ProjectController {
         return "redirect: all";
     }
 
-    @ModelAttribute("users")
+    /* @ModelAttribute("users")
     public List<User> getUsers() {
         return userRepository.findAll();
-    }
+    } */
 
     @RequestMapping("/project")
     public String showDetails(@RequestParam(required = false) Long id, @RequestParam(required = false) String admin, Model model){

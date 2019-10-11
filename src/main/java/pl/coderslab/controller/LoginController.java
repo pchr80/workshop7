@@ -33,7 +33,7 @@ public class LoginController {
 
     @PostMapping("/register")
     public String saveRegistrationForm(
-            @Validated({UserRegisterValidationGroup.class, Default.class}) User user,
+            @Validated({UserRegisterValidationGroup.class}) User user,
             BindingResult result,
             @RequestParam String password2) {
         if (result.hasErrors()) {
@@ -76,7 +76,7 @@ public class LoginController {
 
         if (existingUser == null) {
             loggedIn = false;
-        } else if (!BCrypt.checkpw(user.getPassword(), existingUser.getPassword())) {//(!user.getPassword().equals(existingUser.getPassword())) {
+        } else if (!BCrypt.checkpw(user.getPassword(), existingUser.getPassword())) {  //(!user.getPassword().equals(existingUser.getPassword())) {
             loggedIn = false;
         }
 

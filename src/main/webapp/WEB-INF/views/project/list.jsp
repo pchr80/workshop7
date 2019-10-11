@@ -10,15 +10,15 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
-<c:if test="${admin == 'true'}">
+<!--<c:if test="${admin == 'true'}">
     <%@include file="../admin/header.jsp"%>
-</c:if>
+</c:if>-->
 <h2>Projekty</h2><hr/>
 <c:forEach items="${projects}" var="project">
     ID: ${project.id}<br/>
-    Nazwa: ${project.name}<br />
-    Identyfikator: ${project.identifier}<br/>
-    Data utworzenia: <fmt:formatDate value="${project.dateCreated}" type="both" pattern="yyyy-MM-dd HH:mm:ss"/><br />
+    Nazwa: ${project.name}<br/>
+    Identyfikator: ${project.identifier}<br />
+    Data utworzenia: <fmt:formatDate value="${project.dateCreated}" type="both" pattern="yyyy-MM-dd HH:mm:ss"/><br /><br />
     <a href="<c:url value='/task/all?projectId=${project.id}'></c:url>">Zadania</a><br/>
     <a href="<c:url value='/task/form?projectId=${project.id}'></c:url>">Dodaj zadanie</a><br/>
     <a href="<c:url value='/project/project?id=${project.id}'></c:url>">Szczegóły</a><br/>

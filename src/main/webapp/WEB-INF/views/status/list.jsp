@@ -10,10 +10,10 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
-<c:if test="${login == 'admin'}">
+<!--<c:if test="${login == 'admin'}">
     <%@include file="../admin/header.jsp"%>
-</c:if>
-<h2>Status</h2><hr />
+</c:if>-->
+<h2>Statusy</h2><hr />
 <c:forEach items="${stats}" var="stat">
     ID: ${stat.id}<br/>
     Nazwa: ${stat.name}<br />

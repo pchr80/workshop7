@@ -21,7 +21,7 @@ public class Task {
     private Status status;
     @ManyToOne
     private Priority priority;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     public Long getId() {

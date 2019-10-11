@@ -36,9 +36,9 @@ public class TaskController {
     ActivityRepository activityRepository;
 
     @RequestMapping("/all")
-    public String list(@RequestParam(required = false) Long projectId, @RequestParam(required = false) String admin, Model model, HttpSession session) {
-            String login = (String)session.getAttribute("login");
-            if (login == null || login.equals("admin")) {
+    public String list(@RequestParam(required = false) Long projectId, Model model, HttpSession session) {
+            String login = (String)session.getAttribute("login") == null ? new String() : (String)session.getAttribute("login");
+            if (login.equals("admin")) {
                 if (projectId == null)
                     model.addAttribute("tasks", taskRepository.findAll());
                 else {
@@ -56,14 +56,12 @@ public class TaskController {
                     }
                 }
             }
-        if (admin != null) {
-            session.setAttribute("admin", admin);
-        }
+
             return "task/list";
     }
 
     @RequestMapping("/form")
-    public String showForm(@RequestParam(required = false) Long id, @RequestParam(required = false) Long projectId, @RequestParam(required = false) String admin, Model model, HttpSession session) {
+    public String showForm(@RequestParam(required = false) Long id, @RequestParam(required = false) Long projectId, Model model) {
         Task task = id == null ? new Task() : taskRepository.findFirstById(id);
         if (projectId != null) {
             Project proj = projectRepository.findFirstById(projectId);
@@ -74,16 +72,13 @@ public class TaskController {
             model.addAttribute("users", userRepository.findAllByProjects(pr));
             List<Project> projectList = new ArrayList<>();
             projectList.add(pr);
-            // model.addAttribute("projects", projectRepository.findAll());
             model.addAttribute("projects", projectList);
         } else {
             model.addAttribute("users", userRepository.findAll());
             model.addAttribute("projects", projectRepository.findAll());
         }
         model.addAttribute("task", task);
-        if (admin != null) {
-            session.setAttribute("admin", admin);
-        }
+
         return "task/form";
     }
 

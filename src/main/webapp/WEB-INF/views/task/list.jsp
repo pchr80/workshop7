@@ -21,7 +21,7 @@
     Opis: ${task.description}<br />
     Użytkownik: ${task.user.login}<br />
     Status: ${task.status.name}<br />
-    Priorytet: ${task.priority.name}<br />
+    Priorytet: ${task.priority.name}<br /><br />
     <a href="<c:url value='/task/form?id=${task.id}'></c:url>">Edycja</a><br/>
     <a href="<c:url value='/task/confirmDelete?id=${task.id}'></c:url>">Usuń</a><br/>
     <hr />

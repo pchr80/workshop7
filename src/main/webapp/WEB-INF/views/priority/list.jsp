@@ -10,10 +10,10 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
-<c:if test="${login == 'admin'}">
+<!--<c:if test="${login == 'admin'}">
     <%@include file="../admin/header.jsp"%>
-</c:if>
-<h2>Priorytet</h2><hr />
+</c:if> -->
+<h2>Priorytety</h2><hr />
 <c:forEach items="${priors}" var="prior">
     ID: ${prior.id}<br/>
     Nazwa: ${prior.name}<br />

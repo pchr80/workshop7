@@ -12,9 +12,11 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
+<!--
 <c:if test="${login == 'admin'}">
     <%@include file="../admin/header.jsp"%>
 </c:if>
+-->
 <%@include file="../add/footer.jsp"%>
 </body>
 </html>

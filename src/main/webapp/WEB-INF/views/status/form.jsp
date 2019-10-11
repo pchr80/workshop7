@@ -8,10 +8,10 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
-<c:if test="${login == 'admin'}">
+<!--<c:if test="${login == 'admin'}">
     <%@include file="../admin/header.jsp"%>
-</c:if>
-<h2>Status</h2>
+</c:if>-->
+<h2>Status</h2><hr/>
 <form:form modelAttribute="status" method="POST">
     <form:hidden path="id"/>
     Nazwa: <form:input path="name" /><br />
@@ -19,7 +19,8 @@
     Kolejność sortowania:  <form:input path="sortOrder" /><br />
     <form:errors path="sortOrder" element="div" /><br />
     Aktywny: <form:checkbox path="active"/><br /><br />
-    <input type="submit" value="Zapisz"></input>
+    <input type="submit" value="Submit"></input><br/><br/>
+    <a href="<c:url value='/status/all'></c:url>">Powrót</a>
 </form:form>
 <%@include file="../add/footer.jsp"%>
 </body>

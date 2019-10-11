@@ -8,9 +8,9 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
-<c:if test="${admin == 'true'}">
+<!--<c:if test="${admin == 'true'}">
     <%@include file="../admin/header.jsp"%>
-</c:if>
+</c:if>-->
 <h2>Projekt</h2><hr/>
 <form:form modelAttribute="project" method="POST">
     <form:hidden path="id"/>
@@ -21,8 +21,9 @@
     Url: <form:input path="url" /><br />
     <form:errors path="url" element="div" /><br />
     Aktywny: <form:checkbox path="active"/><br />
-    Użytkownicy: <form:select items="${users}" path="users" itemValue="id" itemLabel="login" multiple="true"/><br />
-    <input type="submit" value="Submit"></input>
+    Użytkownicy: <form:select items="${users}" path="users" itemValue="id" itemLabel="login" multiple="true"/><br /><br />
+    <input type="submit" value="Submit"></input> <br /><br />
+    <a href="<c:url value='/project/all'></c:url>">Powrót</a>
 </form:form>
 <%@include file="../add/footer.jsp"%>
 </body>

@@ -9,20 +9,18 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
-<c:if test="${login == 'admin'}">
-    <%@include file="../admin/header.jsp"%>
-</c:if>
 <h2>Użytkownik</h2>
 <form:form modelAttribute="user" method="POST">
-    <form:hidden path="id"/>
-    Login: <form:input path="login" /><br />
+    <!--  <form:hidden path="id" />  -->
+    Login: <form:input path="login" /><br/>
     <form:errors path="login" element="div" />
-    Imię: <form:input path="firstName" /><br />
+    Imię: <form:input path="firstName" /><br/>
     <form:errors path="firstName" element="div" />
-    Nazwisko: <form:input path="lastName" /><br />
+    Nazwisko: <form:input path="lastName" /><br/>
     <form:errors path="lastName" element="div" />
-    <br />
-    <input type="submit" value="Zapisz"></input>
+    <form:hidden path="password"/>
+    <input type="submit" value="Submitgit add ."></input><br/><br/>
+    <a href="<c:url value='/user/all'></c:url>">Powrót</a>
 </form:form>
 <%@include file="../add/footer.jsp"%>
 </body>

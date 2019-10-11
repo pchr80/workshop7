@@ -9,4 +9,4 @@ Strona główna wyświetla ostatnio utworzone projekty od najnowszego do najstar
 Strona ta wyświetla też listę ostatnich aktywności użytkowników systemu od najnowszej do najstarszej. Limit na stronie głównej to 25.
 Operacje, które pojawiają na liście aktywności, to: utworzenie projektu, dodanie zadania do projektu, zmiana statusu zadania.
 
-Ze stron przeglądowych istnieje możliwość przejścia do wyświetlenia szczegółów encji, edycji, usunięcia.
+Ze stron przeglądowych istnieje możliwość przejścia do wyświetlania szczegółów encji, edycji, usuwania encji.

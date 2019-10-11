@@ -14,7 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(groups = UserRegisterValidationGroup.class)
     @Column(name = "login", unique = true)
     private String login;
 
@@ -26,7 +26,7 @@ public class User {
     @Column(name = "last_name")
     String lastName;
 
-    @NotBlank
+    @NotBlank(groups = UserRegisterValidationGroup.class)
     @Column(name = "password")
     private String password;
 

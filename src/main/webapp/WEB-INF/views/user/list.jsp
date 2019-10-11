@@ -10,15 +10,18 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
+<!--
 <c:if test="${login == \"admin\"}">
     <%@include file="../admin/header.jsp"%>
 </c:if>
+-->
 <h2>Użytkownicy</h2><hr />
 <c:forEach items="${users}" var="user">
     ID: ${user.id}<br/>
     Imię: ${user.firstName}<br />
     Nazwisko: ${user.lastName}<br />
     Login: ${user.login}<br /><br />
+    <a href="<c:url value='/user/form?id=${user.id}'></c:url>">Edycja</a><br/>
     <a href="<c:url value='/user/confirmDelete?id=${user.id}'></c:url>">Usuń</a><br/>
     <hr />
 </c:forEach>

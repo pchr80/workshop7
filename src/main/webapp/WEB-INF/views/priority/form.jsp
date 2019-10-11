@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+git status<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,16 +8,17 @@
 </head>
 <body>
 <%@include file="../add/header.jsp"%>
-<c:if test="${login == 'admin'}">
+<!--<c:if test="${login == 'admin'}">
     <%@include file="../admin/header.jsp"%>
-</c:if>
-<h2>Priorytet</h2>
+</c:if> -->
+<h2>Priorytet</h2><hr/>
 <form:form modelAttribute="priority" method="POST">
     <form:hidden path="id"/>
     Nazwa: <form:input path="name" /><br />
     <form:errors path="name" element="div" /><br />
     Aktywny: <form:checkbox path="active"/><br /><br />
-    <input type="submit" value="Submit"></input>
+    <input type="submit" value="Submit"></input><br/><br/>
+    <a href="<c:url value='/priority/all'></c:url>">Powrót</a>
 </form:form>
 <%@include file="../add/footer.jsp"%>
 </body>

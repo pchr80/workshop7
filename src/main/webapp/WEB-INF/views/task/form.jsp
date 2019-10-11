@@ -23,12 +23,19 @@
     <form:errors path="status" element="div" />
     Priorytet: <form:select items="${priors}" path="priority.id" itemValue="id" itemLabel="name"/><br />
     <form:errors path="priority" element="div" />
-    Użytkownik: <form:select items="${users}" path="user.id" itemValue="id" itemLabel="login"/><br />  <!-- itemValue="id" itemLabel="fullName" multiple="true"-->
+    Użytkownik: <form:select items="${users}" path="user" itemValue="id" itemLabel="login" multiple="true"/><br />
+    <!--
+    <form:select path="user.id">
+         <form:option value="" label="--- Select ---" itemValue="id" itemLabel="login"/>
+    <form:options items="${users}" itemValue="id" itemLabel="login"/>
+    </form:select>
+    -->
     <form:errors path="user" element="div" />
     Projekt: <form:select items="${projects}" path="project.id" itemValue="id" itemLabel="name"/><br />
     <form:errors path="project" element="div" />
     <br />
-    <input type="submit" value="Zapisz"></input>
+    <input type="submit" value="Zapisz"></input><br /><br/>
+    <a href="<c:url value='/task/all?projectId=${task.project.id}'></c:url>">Powrót</a>
 </form:form>
 <%@include file="../add/footer.jsp"%>
 </body>

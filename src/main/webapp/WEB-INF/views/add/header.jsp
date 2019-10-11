@@ -26,11 +26,14 @@
         </c:otherwise>
     </c:choose>
     <div style="clear: both">
-    <br/>
     <a href="<c:url value='/'></c:url>">Strona główna</a><br/>
-    <a href="<c:url value='/adm'></c:url>">Administracja</a><br/>
-    <a href="<c:url value='/project/all?admin=false'></c:url>">Projekty</a><br/>
-    <a href="<c:url value='/task/all?admin=false'></c:url>">Zadania</a><br/>
+    <!-- <a href="<c:url value='/adm'></c:url>">Administracja</a><br/> -->
+    <a href="<c:url value='/project/all'></c:url>">Projekty</a><br/>
+        <a href="<c:url value='/project/form'></c:url>">Nowy projekt</a>&nbsp;&nbsp;<br/>
+    <a href="<c:url value='/task/all'></c:url>">Zadania</a><br/>
+        <c:if test="${login == 'admin'}">
+            <%@include file="../admin/header.jsp"%>
+        </c:if>
     <br/>
     <hr>
 </header>

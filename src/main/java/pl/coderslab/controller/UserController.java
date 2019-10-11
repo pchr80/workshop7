@@ -67,15 +67,15 @@ public class UserController {
         return "user/list";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/form")
     public String showForm(@RequestParam(required = false) Long id, Model model){
         User user = id == null ? new User() : userRepository.findFirstById(id);
         model.addAttribute("user", user);
         return "user/form";
     }
 
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public String saveForm(@ModelAttribute @Valid User user, BindingResult result) { //@Valid
+    @RequestMapping(path = "/form", method = RequestMethod.POST)
+    public String saveForm(@Valid User user, BindingResult result) {  //@ModelAttribute @Valid
         if (result.hasErrors()) {
             return "user/form";
         }

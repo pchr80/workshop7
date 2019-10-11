@@ -21,8 +21,9 @@
     Data utworzenia: <fmt:formatDate value="${project.dateCreated}" type="both" pattern="yyyy-MM-dd HH:mm:ss"/><br />
     Url: ${project.url}<br />
     Projekt aktywny: ${project.active}<br />
-    Użytkownicy: ${project.users}<br />
-    <a href="<c:url value='/project/form?id=${project.id}'></c:url>">Edycja</a><br/>
+    Użytkownicy: ${project.users}<br /><br />
+    <a href="<c:url value='/project/form?id=${project.id}'></c:url>">Edycja</a><br />
+    <a href="<c:url value='/project/all'></c:url>">Powrót</a>
     <hr />
 <%@include file="../add/footer.jsp"%>
 </body>
